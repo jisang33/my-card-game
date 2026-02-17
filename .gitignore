@@ -1,2 +1,5 @@
 # Supabase 키 (보안)
 config.js
+
+# Vercel 빌드 출력
+card_game_supabase/
