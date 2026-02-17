@@ -1,11 +1,15 @@
 /**
  * 카드 뒤집기 게임 - Supabase fetch API 직접 호출 (라이브러리 불필요)
+ * Supabase 키는 config.js에서 로드 (config.example.js 참고)
  */
-const SUPABASE_URL = 'https://jgoewykmyisxauhzmlyv.supabase.co';
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Impnb2V3eWtteWlzeGF1aHptbHl2Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjgxNTA4NDIsImV4cCI6MjA4MzcyNjg0Mn0.3XtwwSNney_qx40mzbdyOeSpQVbyAlKONMKE1HCOqjM';
+const SUPABASE_URL = window.SUPABASE_URL;
+const SUPABASE_ANON_KEY = window.SUPABASE_ANON_KEY;
 
 // Supabase REST API - fetch 직접 호출
 async function supabaseFetch(path, options = {}) {
+  if (!SUPABASE_URL || !SUPABASE_ANON_KEY) {
+    throw new Error('config.js를 설정해주세요. config.example.js를 config.js로 복사 후 키를 입력하세요.');
+  }
   const url = `${SUPABASE_URL}/rest/v1${path}`;
   const headers = {
     'apikey': SUPABASE_ANON_KEY,
