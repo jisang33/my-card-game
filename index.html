@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>카드 뒤집기 게임</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🃏 카드 뒤집기</h1>
+      <div class="game-info">
+        <span class="moves">시도: <strong id="moves">0</strong></span>
+        <span class="timer">시간: <strong id="timer">0</strong>초</span>
+      </div>
+      <div class="difficulty">
+        <label>난이도:</label>
+        <select id="difficulty">
+          <option value="easy">쉬움 (6쌍)</option>
+          <option value="normal" selected>보통 (8쌍)</option>
+          <option value="hard">어려움 (10쌍)</option>
+        </select>
+        <button id="restart" class="btn">새 게임</button>
+      </div>
+    </header>
+
+    <main>
+      <div id="game-board" class="game-board"></div>
+    </main>
+
+    <aside class="leaderboard">
+      <div class="leaderboard-header">
+        <h2>🏆 리더보드</h2>
+        <button id="refresh-leaderboard" class="btn btn-small">새로고침</button>
+      </div>
+      <div id="leaderboard-list">
+        <p class="loading">로딩 중...</p>
+      </div>
+    </aside>
+  </div>
+
+  <!-- 시작 화면: 이름 입력 후 게임 시작 -->
+  <div id="start-modal" class="modal">
+    <div class="modal-content">
+      <h2>🃏 카드 뒤집기</h2>
+      <p class="modal-desc">리더보드에 기록될 이름을 입력하세요</p>
+      <input type="text" id="start-name" placeholder="이름 입력" maxlength="20" class="modal-input">
+      <button id="start-btn" class="btn">게임 시작</button>
+    </div>
+  </div>
+
+  <!-- 게임 클리어 모달 -->
+  <div id="game-over" class="modal hidden">
+    <div class="modal-content">
+      <h2>🎉 클리어!</h2>
+      <p>시도 횟수: <strong id="final-moves">0</strong></p>
+      <p>소요 시간: <strong id="final-time">0</strong>초</p>
+      <p>점수: <strong id="final-score">0</strong></p>
+      <p class="save-msg">✅ 리더보드에 자동 저장되었습니다!</p>
+      <button id="play-again" class="btn">다시 하기</button>
+    </div>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
